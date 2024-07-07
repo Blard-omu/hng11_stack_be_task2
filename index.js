@@ -6,7 +6,7 @@ import authRouter from "./src/routes/auth.js";
 import organisationRouter from "./src/routes/organisation.js";
 import bodyParser from "body-parser";
 import { createUserTable } from "./models/user.js";
-import { createOrganisationTable } from "./models/organisation.js";
+import { createOrganisationTable, createUserOrganisationTable } from "./models/organisation.js";
 
 dotenv.config();
 
@@ -36,6 +36,7 @@ const syncDb = async () => {
   try {
     await createUserTable();
     await createOrganisationTable();
+    await createUserOrganisationTable();
     console.log('Database tables created successfully.');
   } catch (error) {
     console.error('Error creating database tables:', error);
