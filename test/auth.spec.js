@@ -1,21 +1,21 @@
-// import jwt from 'jsonwebtoken';
-// import dotenv from 'dotenv';
-// import request from 'supertest';
-// import app from '../index.js'; 
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import request from 'supertest';
+import app from '../index.js'; 
 
-// dotenv.config();
+dotenv.config();
 
-// // Test Token
-// describe('Token Generation', () => {
-//   it('should generate a token with the correct user details and expiration', () => {
-//     const userId = '123456';
-//     const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+// Test Token
+describe('Token Generation', () => {
+  it('should generate a token with the correct user details and expiration', () => {
+    const userId = '123456';
+    const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     expect(decoded.userId).toBe(userId);
-//     expect(decoded.exp).toBeGreaterThan(decoded.iat);
-//   });
-// });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    expect(decoded.userId).toBe(userId);
+    expect(decoded.exp).toBeGreaterThan(decoded.iat);
+  });
+});
 
 // // Test Organisation Access
 // describe('Organisation Access', () => {
@@ -126,9 +126,7 @@
 //   });
 // });
 
-import request from 'supertest';
-import jwt from 'jsonwebtoken';
-import app from '../index'; 
+
 
 describe('Auth API', () => {
   it('should register user successfully', async () => {
