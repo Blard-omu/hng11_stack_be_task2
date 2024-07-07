@@ -2,9 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
-import { connectDB } from "./src/helpers/db.config.js";
 import authRouter from "./src/routes/auth.js";
-
+import bodyParser from "body-parser";
+import { createUserTable } from "./models/user.js";
+import { createOrganisationTable } from "./models/organisation.js";
 
 dotenv.config();
 
@@ -12,21 +13,34 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Middleware
+app.use(bodyParser.json());
 app.use(express.json());
-
 
 app.use(cors());
 app.use(morgan("dev"));
 
-// Connect to DB
-// connectDB();
-
-app.get('/', (req, res) =>{
-    return res.json({status: "success", message: "Welcome to Blard's hng11 task 2 server"});
-})
+app.get("/", (req, res) => {
+  return res.json({
+    status: "success",
+    message: "Welcome to Blard's hng11 task 2 server",
+  });
+});
 
 // Routes
 app.use("/api/v1/auth", authRouter);
+
+//
+const syncDb = async () => {
+  try {
+    await createUserTable();
+    await createOrganisationTable();
+    console.log('Database tables created successfully.');
+  } catch (error) {
+    console.error('Error creating database tables:', error);
+  }
+};
+
+syncDb();
 
 
 app.listen(port, () => {
