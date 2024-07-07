@@ -47,6 +47,7 @@ export const getOrganisationById = async (req, res) => {
 export const getOrganisationsByUser = async (req, res) => {
     try {
       const { userId } = req.user;
+      // console.log(userId);
       const organisations = await findOrganisationsByUserId(userId);
   
       res.status(200).json({
@@ -72,7 +73,7 @@ export const addUserToOrganisationController = async (req, res) => {
       return res.status(404).json({ status: "error", message: "Organisation not found" });
     }
 
-    if (organisation.userId !== userId) {
+    if (organisation.userid !== userId) {
       return res.status(403).json({ status: "error", message: "You do not have permission to add users to this organisation" });
     }
 

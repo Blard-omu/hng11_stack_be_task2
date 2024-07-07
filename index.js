@@ -7,6 +7,7 @@ import organisationRouter from "./src/routes/organisation.js";
 import bodyParser from "body-parser";
 import { createUserTable } from "./models/user.js";
 import { createOrganisationTable, createUserOrganisationTable } from "./models/organisation.js";
+import { errorHandler } from "./src/middlewares/errorHandler.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const port = process.env.PORT || 8000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json());
+
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -28,8 +30,11 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/organisations", organisationRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/organisations", organisationRouter);
+
+app.use(errorHandler);
+
 
 //
 const syncDb = async () => {
@@ -49,3 +54,5 @@ syncDb();
 app.listen(port, () => {
   console.log(`HNG task 2 server listening on port ${port}`);
 });
+
+export default app;

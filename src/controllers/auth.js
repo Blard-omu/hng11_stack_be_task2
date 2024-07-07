@@ -85,8 +85,8 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Wrong password" });
     }
 
-    const token = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+    const token = jwt.sign({ userId: user.userid }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
     });
 
     res.json({
@@ -141,21 +141,4 @@ export const getUserById = async (req, res) => {
   }
 };
 
-
-// // Organisation
-// export const getUserOrganisations = async (req, res) => {
-//   try {
-//     const userId = req.user.userId;
-//     // console.log(userId);
-    
-//     const organisations = await getOrganisationsByUserId(userId);
-
-//     res.status(200).json({
-//       status: 'success',
-//       data: organisations,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
 

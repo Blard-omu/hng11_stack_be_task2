@@ -24,6 +24,40 @@ The **User-Organisation App** is a backend API application that allows users to 
 ## Setup Instructions
 
 1. Clone the repository.
+
+2. Folder structure
+
+```
+hng_task02/
+├── src/
+│   ├── controllers/
+│   │   ├── auth.js
+│   │   └── organisation.js
+│   ├── models/
+│   │   ├── user.js
+│   │   └── organisation.js
+│   ├── helpers/
+│   │   ├── auth.js
+│   │   └── db.config.js
+│   ├── middlewares/
+│   │   └── auth.js
+│   ├── models/
+│   │   ├── organisation.js
+│   │   └── user.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── organisation.js
+│   └── index.js
+├── .env
+├── package.json
+├── README.md
+├── initialSetup.js
+└── tests/
+    ├── auth.spec.js
+    └── organisation.spec.js
+
+```
+
 2. Install dependencies using `npm install`.
 3. Create a `.env` file with the following environment variables:
    ```env
@@ -38,7 +72,7 @@ The **User-Organisation App** is a backend API application that allows users to 
 ### User Authentication
 
 #### Register a New User
-- **Endpoint:** `[POST] /api/v1/auth/register`
+- **Endpoint:** `[POST] /api/auth/register`
 - **Request Body:**
   ```json
   {
@@ -67,7 +101,7 @@ The **User-Organisation App** is a backend API application that allows users to 
   ```
 
 #### Login a User
-- **Endpoint:** `[POST] /api/v1/auth/login`
+- **Endpoint:** `[POST] /api/auth/login`
 - **Request Body:**
   ```json
   {
@@ -96,7 +130,7 @@ The **User-Organisation App** is a backend API application that allows users to 
 ### Organisation Management
 
 #### Create an Organisation
-- **Endpoint:** `[POST] /api/v1/organisations`
+- **Endpoint:** `[POST] /api/organisations`
 - **Request Body:**
   ```json
   {
@@ -118,7 +152,7 @@ The **User-Organisation App** is a backend API application that allows users to 
   ```
 
 #### Get a Single Organisation by ID
-- **Endpoint:** `[GET] /api/v1/organisations/:orgId`
+- **Endpoint:** `[GET] /api/organisations/:orgId`
 - **Response:**
   ```json
   {
@@ -133,7 +167,7 @@ The **User-Organisation App** is a backend API application that allows users to 
   ```
 
 #### Get All Organisations for a User
-- **Endpoint:** `[GET] /api/v1/organisations`
+- **Endpoint:** `[GET] /api/organisations`
 - **Response:**
   ```json
   {
@@ -157,7 +191,7 @@ The **User-Organisation App** is a backend API application that allows users to 
   ```
 
 #### Add a User to an Organisation
-- **Endpoint:** `[POST] /api/v1/organisations/:orgId/users`
+- **Endpoint:** `[POST] /api/organisations/:orgId/users`
 - **Request Body:**
   ```json
   {

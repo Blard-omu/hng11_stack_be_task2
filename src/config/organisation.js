@@ -1,4 +1,4 @@
-import pool from '../src/helpers/db.config.js';
+import pool from "../helpers/db.config";
 
 const createOrganisationTable = async () => {
   const queryText = `
