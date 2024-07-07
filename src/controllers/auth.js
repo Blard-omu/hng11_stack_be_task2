@@ -1,5 +1,5 @@
 import { createUser, findUserByEmail, getAllUsers, findUserById } from '../../models/user.js';
-import { createOrganisation } from '../../models/organisation.js';
+import { createOrganisation} from '../../models/organisation.js';
 import { hashPassword, comparePassword } from '../helpers/auth.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -141,22 +141,21 @@ export const getUserById = async (req, res) => {
   }
 };
 
-// controllers/auth.js
-import { getOrganisationsByUserId } from '../../models/organisation.js';
 
-export const getUserOrganisations = async (req, res) => {
-  try {
-    const userId = req.user.userId;
-    // console.log(userId);
+// // Organisation
+// export const getUserOrganisations = async (req, res) => {
+//   try {
+//     const userId = req.user.userId;
+//     // console.log(userId);
     
-    const organisations = await getOrganisationsByUserId(userId);
+//     const organisations = await getOrganisationsByUserId(userId);
 
-    res.status(200).json({
-      status: 'success',
-      data: organisations,
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//     res.status(200).json({
+//       status: 'success',
+//       data: organisations,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 

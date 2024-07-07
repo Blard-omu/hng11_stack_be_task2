@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 import authRouter from "./src/routes/auth.js";
+import organisationRouter from "./src/routes/organisation.js";
 import bodyParser from "body-parser";
 import { createUserTable } from "./models/user.js";
 import { createOrganisationTable } from "./models/organisation.js";
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/organisations", organisationRouter);
 
 //
 const syncDb = async () => {
