@@ -21,15 +21,16 @@ export const comparePassword = (password, hashed) => {
 };
 
 
-export const welcomeMsg = (req, res) => {
+export const welcomeMsg = app.get("/", (req, res) => {
   return res.json({
     status: "success",
-    message: "Welcome to Blard's hng11 task 2 server",
+    message: "Welcome to Blard's hng11 stage 2 server",
     baseUrl: "https://hng11-stack-be-task2.onrender.com/api",
     endpoints: [
       {
         method: "POST",
         path: "/auth/register",
+        protected: false,
         description: "Register a new user",
         requestBody: {
           firstName: "string",
@@ -56,6 +57,7 @@ export const welcomeMsg = (req, res) => {
       {
         method: "POST",
         path: "/auth/login",
+        protected: false,
         description: "Log in a user",
         requestBody: {
           email: "string",
@@ -78,7 +80,8 @@ export const welcomeMsg = (req, res) => {
       },
       {
         method: "GET",
-        path: "auth/users",
+        path: "/auth/users",
+        protected: false,
         description: "Get all users",
         response: {
           status: "success",
@@ -96,7 +99,8 @@ export const welcomeMsg = (req, res) => {
       },
       {
         method: "GET",
-        path: "auth/users/:userId",
+        path: "/auth/users/:userId",
+        protected: false,
         description: "Get user by ID",
         response: {
           status: "success",
@@ -113,6 +117,7 @@ export const welcomeMsg = (req, res) => {
       {
         method: "POST",
         path: "/organisations",
+        protected: true,
         description: "Create a new organisation",
         requestBody: {
           name: "string",
@@ -131,7 +136,9 @@ export const welcomeMsg = (req, res) => {
       {
         method: "GET",
         path: "/organisations",
+        protected: true,
         description: "Get all organisations the user belongs to or created",
+        protected: true,
         response: {
           status: "success",
           message: "Organisations retrieved successfully",
@@ -149,6 +156,7 @@ export const welcomeMsg = (req, res) => {
       {
         method: "GET",
         path: "/organisations/:orgId",
+        protected: true,
         description: "Get a single organisation by ID",
         response: {
           status: "success",
@@ -163,6 +171,7 @@ export const welcomeMsg = (req, res) => {
       {
         method: "POST",
         path: "/organisations/:orgId/users",
+        protected: true,
         description: "Add a user to an organisation",
         requestBody: {
           userId: "string"
@@ -174,4 +183,4 @@ export const welcomeMsg = (req, res) => {
       }
     ]
   });
-}
+});
