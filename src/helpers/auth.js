@@ -21,7 +21,7 @@ export const comparePassword = (password, hashed) => {
 };
 
 
-export const welcomeMsg = app.get("/", (req, res) => {
+export const welcomeMsg =  (req, res) => {
   return res.json({
     status: "success",
     message: "Welcome to Blard's hng11 stage 2 server",
@@ -182,5 +182,5 @@ export const welcomeMsg = app.get("/", (req, res) => {
         }
       }
     ]
-  });
-});
+  })
+}
