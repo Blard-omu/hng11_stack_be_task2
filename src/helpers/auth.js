@@ -25,7 +25,7 @@ export const welcomeMsg =  (req, res) => {
   return res.json({
     status: "success",
     message: "Welcome to Blard's hng11 stage 2 server",
-    baseUrl: "https://hng11-stack-be-task2.onrender.com/api",
+    baseUrl: "https://southern-cindee-blard-525ca8d4.koyeb.app/api",
     endpoints: [
       {
         method: "POST",
