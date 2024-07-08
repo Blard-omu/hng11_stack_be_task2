@@ -1,4 +1,4 @@
-import { createOrganisation, findOrganisationById, findOrganisationsByUserId, addUserToOrganisation } from "../../models/organisation.js";
+import { createOrganisation, findOrganisationById, findOrganisationsByUserId, addUserToOrganisation, findUserInOrganisationById } from "../../models/organisation.js";
 import { findUserById } from "../../models/user.js";
 
 
@@ -77,6 +77,12 @@ export const addUserToOrganisationController = async (req, res) => {
       return res.status(403).json({ status: "error", message: "You do not have permission to add users to this organisation" });
     }
 
+    const existingUserInOrg = await findUserInOrganisationById(newUserId, orgId);
+    if (existingUserInOrg) {
+      return res.status(400).json({ status: "error", message: "User already exists in this organisation" });
+    }
+
+    
     const user = await findUserById(newUserId);
 
     if (!user) {

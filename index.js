@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import { createUserTable } from "./models/user.js";
 import { createOrganisationTable, createUserOrganisationTable } from "./models/organisation.js";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
+import { welcomeMsg } from "./src/helpers/auth.js";
 
 dotenv.config();
 
@@ -22,12 +23,8 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  return res.json({
-    status: "success",
-    message: "Welcome to Blard's hng11 task 2 server",
-  });
-});
+app.get("/", welcomeMsg);
+
 
 // Routes
 app.use("/api/auth", authRouter);
@@ -36,7 +33,6 @@ app.use("/api/organisations", organisationRouter);
 app.use(errorHandler);
 
 
-//
 const syncDb = async () => {
   try {
     await createUserTable();

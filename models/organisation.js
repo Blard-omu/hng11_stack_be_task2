@@ -40,6 +40,15 @@ const findOrganisationById = async (orgId) => {
   return res.rows[0];
 };
 
+const findUserInOrganisationById = async (userId, orgId) => {
+  const queryText = `
+    SELECT * FROM user_organisations
+    WHERE userId = $1 AND orgId = $2
+  `;
+  const res = await pool.query(queryText, [userId, orgId]);
+  return res.rows[0];
+};
+
 const findOrganisationsByUserId = async (userId) => {
   const queryText = 'SELECT * FROM organisations WHERE userId = $1';
   const res = await pool.query(queryText, [userId]);
@@ -55,4 +64,4 @@ const addUserToOrganisation = async (userId, orgId) => {
   await pool.query(queryText, values);
 };
 
-export { createOrganisationTable, createUserOrganisationTable, createOrganisation, findOrganisationById, findOrganisationsByUserId, addUserToOrganisation };
+export { createOrganisationTable, createUserOrganisationTable, createOrganisation, findOrganisationById, findOrganisationsByUserId, findUserInOrganisationById, addUserToOrganisation };
