@@ -37,7 +37,7 @@ Using your most comfortable backend framework of your choice, adhere to the foll
     - successful response: Return the payload with a 201 success status code.
 - User Login
         - Implement an endpoint for user Login.
-    - Use the JWT token returned to access ```PROTECTED``` endpoints.
+    - Use the JWT token returned to access `PROTECTED` endpoints.
 
 ## Organisation
 - A user can belong to one or more organisations
@@ -66,7 +66,7 @@ Using your most comfortable backend framework of your choice, adhere to the foll
 	"phone": "string",
 }
 ```
-Successful response: Return the payload below with a ```201``` success status code.
+Successful response: Return the payload below with a `201` success status code.
 ```
 {
     "status": "success",
@@ -100,7 +100,7 @@ Login request body:
 	"password": "string",
 }
 ```
-Successful response: Return the payload below with a ```200``` success status code.
+Successful response: Return the payload below with a `200` success status code.
 ```
 {
     "status": "success",
@@ -127,7 +127,7 @@ Unsuccessful login response:
 ```
 
 - ```[GET] /api/users/:id``` : a user gets their own record or user record in organisations they belong to or created [PROTECTED].
-Successful response: Return the payload below with a ```200``` success status code.
+Successful response: Return the payload below with a `200` success status code.
 
 ```
 {
@@ -143,8 +143,8 @@ Successful response: Return the payload below with a ```200``` success status co
 }
 ```
 
-- ```[GET] /api/organisations``` : gets all your organisations the user belongs to or created. If a user is logged in properly, they can get all their organisations. They should not get another user’s organisation ```[PROTECTED]```.
-Successful response: Return the payload below with a ```200``` success status code.
+- ```[GET] /api/organisations``` : gets all your organisations the user belongs to or created. If a user is logged in properly, they can get all their organisations. They should not get another user’s organisation `[PROTECTED]`.
+Successful response: Return the payload below with a `200` success status code.
 
 ```
 {
@@ -162,8 +162,8 @@ Successful response: Return the payload below with a ```200``` success status co
 }
 ```
 
-- ```[GET] /api/organisations/:orgId``` the logged in user gets a single organisation record ```[PROTECTED]```
-Successful response: Return the payload below with a ```200``` success status code.
+- ```[GET] /api/organisations/:orgId``` the logged in user gets a single organisation record `[PROTECTED]`
+Successful response: Return the payload below with a `200` success status code.
 ```
 {
     "status": "success",
@@ -176,7 +176,7 @@ Successful response: Return the payload below with a ```200``` success status co
 }
 ```
 
-- ```[POST] /api/organisations``` : a user can create their new organisation ```[PROTECTED]```.
+- ```[POST] /api/organisations``` : a user can create their new organisation `[PROTECTED]`.
 Request body: request body must be validated.
 ```
 {
@@ -184,7 +184,7 @@ Request body: request body must be validated.
 	"description": "string",
 }
 ```
-Successful response: Return the payload below with a ```201``` success status code.
+Successful response: Return the payload below with a `201` success status code.
 ```
 {
     "status": "success",
@@ -214,7 +214,7 @@ Request body:
 }
 ```
 
-Successful response: Return the payload below with a ```200``` success status code.
+Successful response: Return the payload below with a `200` success status code.
 
 ```
 {
@@ -231,9 +231,9 @@ Write appropriate unit tests to cover
 - Token generation - Ensure token expires at the correct time and correct user details is found in token.
 - Organisation - Ensure users can’t see data from organisations they don’t have access to.
 ### End-to-End Test Requirements for the Register Endpoint
-The goal is to ensure the POST ```/auth/register``` endpoint works correctly by performing end-to-end tests. The tests should cover successful user registration, validation errors, and database constraints.
+The goal is to ensure the POST `/auth/register` endpoint works correctly by performing end-to-end tests. The tests should cover successful user registration, validation errors, and database constraints.
 ### Directory Structure:
-- The test file should be named ```auth.spec.ext``` (ext is the file extension of your chosen language) inside a folder named tests . For example ```tests/auth.spec.ts``` assuming I’m using Typescript
+- The test file should be named `auth.spec.ext` (ext is the file extension of your chosen language) inside a folder named tests . For example `tests/auth.spec.ts` assuming I’m using Typescript
 
 ## Test Scenarios:
     - It Should Register User Successfully with Default Organisation:Ensure a user is registered successfully when no organisation details are provided.

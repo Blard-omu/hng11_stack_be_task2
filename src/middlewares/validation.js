@@ -10,7 +10,7 @@ export const validateRegister = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array().map(err => ({ field: err.param, message: err.msg }))
+        errors: errors.array().map(err => ({ field: err.path, message: err.msg }))
       });
     }
     next();
@@ -24,7 +24,7 @@ export const validateLogin = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array().map(err => ({ field: err.param, message: err.msg }))
+        errors: errors.array().map(err => ({ field: err.path, message: err.msg }))
       });
     }
     next();
@@ -37,7 +37,7 @@ export const validateOrganisation = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array().map(err => ({ field: err.param, message: err.msg }))
+        errors: errors.array().map(err => ({ field: err.path, message: err.msg }))
       });
     }
     next();
@@ -50,7 +50,7 @@ export const validateAddUserToOrganisation = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array().map(err => ({ field: err.param, message: err.msg }))
+        errors: errors.array().map(err => ({ field: err.path, message: err.msg }))
       });
     }
     next();

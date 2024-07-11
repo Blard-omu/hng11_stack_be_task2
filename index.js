@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 import authRouter from "./src/routes/auth.js";
+import userRouter from "./src/routes/user.js";
 import organisationRouter from "./src/routes/organisation.js";
 import bodyParser from "body-parser";
 import { createUserTable } from "./models/user.js";
@@ -29,6 +30,7 @@ app.get("/", welcomeMsg);
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/organisations", organisationRouter);
+app.use("/api/users", userRouter);
 
 app.use(errorHandler);
 

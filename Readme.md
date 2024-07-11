@@ -239,21 +239,6 @@ connectDb();
 export default pool;
 ```
 
-## Initial Setup
-
-Make sure to run the initial setup to create necessary tables:
-
-```javascript
-import { createUserTable } from "./src/models/user.js";
-import { createOrganisationTable, createUserOrganisationTable } from "./src/models/organisation.js";
-
-(async () => {
-  await createUserTable();
-  await createOrganisationTable();
-  await createUserOrganisationTable();
-})();
-```
-
 ## Running the Application
 
 Use the following command to start the application:
