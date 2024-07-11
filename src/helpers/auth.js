@@ -80,8 +80,8 @@ export const welcomeMsg =  (req, res) => {
       },
       {
         method: "GET",
-        path: "/auth/users",
-        protected: false,
+        path: "/users",
+        protected: true,
         description: "Get all users",
         response: {
           status: "success",
@@ -99,8 +99,8 @@ export const welcomeMsg =  (req, res) => {
       },
       {
         method: "GET",
-        path: "/auth/users/:userId",
-        protected: false,
+        path: "/users/:userId",
+        protected: true,
         description: "Get user by ID",
         response: {
           status: "success",
